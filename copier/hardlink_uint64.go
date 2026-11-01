@@ -1,4 +1,4 @@
-//go:build (linux && !mips && !mipsle && !mips64 && !mips64le) || freebsd || netbsd
+//go:build (linux && !mips && !mipsle && !mips64 && !mips64le) || freebsd || netbsd || aix
 
 package copier
 
