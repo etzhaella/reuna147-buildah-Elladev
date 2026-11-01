@@ -3,6 +3,7 @@
 package rawfilelock
 
 import (
+	"io"
 	"time"
 
 	"golang.org/x/sys/unix"
@@ -23,7 +24,7 @@ func lockHandle(fd fileHandle, lType LockType, nonblocking bool) error {
 	}
 	lk := unix.Flock_t{
 		Type:   int16(fType),
-		Whence: int16(unix.SEEK_SET),
+		Whence: int16(io.SeekStart), // unix.SEEK_SET is not defined on AIX
 		Start:  0,
 		Len:    0,
 	}

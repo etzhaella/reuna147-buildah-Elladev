@@ -42,7 +42,12 @@ func getWinsize(fd uintptr) (*Winsize, error) {
 }
 
 func setWinsize(fd uintptr, ws *Winsize) error {
-	return unix.IoctlSetWinsize(int(fd), int(unix.TIOCSWINSZ), &unix.Winsize{
+	// unix.TIOCSWINSZ overflows int as a constant on AIX (0xffffffff80087467).
+	// Assign to a variable first so the narrowing conversions are run-time,
+	// not compile-time constant expressions.
+	var tiocswinsz uint64 = unix.TIOCSWINSZ
+	req := int(int32(tiocswinsz))
+	return unix.IoctlSetWinsize(int(fd), req, &unix.Winsize{
 		Row:    ws.Height,
 		Col:    ws.Width,
 		Xpixel: ws.x,
