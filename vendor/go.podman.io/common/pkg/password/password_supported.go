@@ -1,4 +1,4 @@
-//go:build linux || darwin || freebsd || netbsd
+//go:build linux || darwin || freebsd || netbsd || aix
 
 package password
 

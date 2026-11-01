@@ -42,7 +42,7 @@ func getWinsize(fd uintptr) (*Winsize, error) {
 }
 
 func setWinsize(fd uintptr, ws *Winsize) error {
-	return unix.IoctlSetWinsize(int(fd), unix.TIOCSWINSZ, &unix.Winsize{
+	return unix.IoctlSetWinsize(int(fd), int(unix.TIOCSWINSZ), &unix.Winsize{
 		Row:    ws.Height,
 		Col:    ws.Width,
 		Xpixel: ws.x,

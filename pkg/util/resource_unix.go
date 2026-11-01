@@ -1,4 +1,4 @@
-//go:build linux || freebsd || darwin
+//go:build linux || freebsd || darwin || aix
 
 package util //nolint:revive,nolintlint
 
