@@ -1,4 +1,4 @@
-//go:build !linux && !windows && !freebsd && !solaris && !darwin
+//go:build !linux && !windows && !freebsd && !solaris && !darwin && !aix
 
 package reexec
 

@@ -1,4 +1,4 @@
-//go:build solaris || darwin
+//go:build solaris || darwin || aix
 
 package reexec
 
